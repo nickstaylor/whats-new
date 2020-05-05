@@ -5,8 +5,16 @@
 }
 
 .app {
-  display: flex;
-  background: #141527;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-areas:
+  "h h h h h"
+  "n m m m m";
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 100px auto;
+  justify-content: center;
+  flex-direction: column;
+  background: #0c3c5f;
   height: 100vh;
   text-align: center;
   width: 100%;
