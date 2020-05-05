@@ -1,0 +1,32 @@
+.news-article {
+box-sizing: border-box;
+border: 3px solid whitesmoke;
+
+dislay: flex;
+flex-direction: column;
+/* justify-content: space-around; */
+background: #1f6fa8;
+border-radius: 4px;
+}
+
+
+.news-article img {
+  width: 100%;
+}
+
+.article-body{
+  flex-grow: 1;
+  background: whitesmoke;
+  padding: 10px;
+}
+
+.article-button{
+  width: 100%;
+  background-color: #B46AF1;
+  padding: 10px;
+  font-size: 1.5em;
+  color: whitesmoke;
+  cursor: pointer;
+  flex-grow: 1;
+
+}
