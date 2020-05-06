@@ -20,22 +20,69 @@ class App extends Component {
       health: health,
       science: science,
       technology: technology,
-      chosen: local
+      chosen: local,
+      searchInput: '',
+      filteredData: false
     }
   }
 
   chooseCategory = (event) =>{
   const { name } = event.target
-   this.setState({chosen: this.state[name]})
+  const menu = event.target.parentNode.children
+  const list = [...menu]
+  console.log(typeof list)
+  list.forEach(item=>{
+    if (item.innerText !== event.target.innerText){
+      item.style.backgroundColor = '#1f6fa8'
+    } else {
+      item.style.backgroundColor = 'orange'
+    }
+  })
+  console.log('nextsibling', event.target.nextSibling)
+  console.log('parentNode.children', event.target.parentNode.children)
+  console.log('type of parentNode.children', typeof(event.target.parentNode.children))
+  event.target.style.backgroundColor = 'orange'
+    console.log('style', event.target.style)
+   this.setState({chosen: this.state[name],
+                  menu: name,
+                  searchInput: '',
+                  filteredData: false})
  }
+
+ handleChange = event => {
+  const { value } = event.target
+  this.setState({
+    searchInput: value
+  })
+}
+
+  submitSearch = ()=>{
+    this.setState({filteredData: true})
+  }
+
+  // resetFilter = () => {
+  //   this.setState({filteredData: false,
+  //                   searchInput: ''})
+  // }
 
 
   render () {
     return (
       <div className="app">
-        <SearchForm />
-        <Menu chooseCategory={this.chooseCategory}/>
-        <NewsContainer data={this.state.chosen} />
+        <SearchForm
+        handleChange={this.handleChange}
+        searchInput={this.state.searchInput}
+        submitSearch={this.submitSearch}
+         />
+        <Menu
+        chooseCategory={this.chooseCategory}
+        menu={this.state.menu}
+        />
+        <NewsContainer
+        data={this.state.chosen}
+        searchInput={this.state.searchInput}
+        filteredData={this.state.filteredData}
+        resetFilter={this.resetFilter} />
       </div>
     )
   }
