@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchForm.css';
 
-const SearchForm = () =>{
+const SearchForm = (props) =>{
   return (
     <div className='header'>
     <h2>One Sweet News App!</h2>
@@ -9,8 +9,10 @@ const SearchForm = () =>{
       <input
       type="text"
       placeholder="search for articles here"
+      value={props.searchInput}
+      onChange={props.handleChange}
       />
-      <button>Search</button>
+      <button onClick={props.submitSearch}>Search</button>
     </section>
     </div>
   )
