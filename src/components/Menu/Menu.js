@@ -11,11 +11,11 @@ const Menu = ({chooseCategory})=> {
 
   return (
     <div className="menu-bar">
-    <button name="entertainment" onClick={chooseCategory}><img src={entertainment} alt="entertainment-logo"/>Entertainment</button>
-    <button name="science" onClick={chooseCategory}><img src={science} alt="science-logo"/>Science</button>
-    <button name="technology" onClick={chooseCategory}><img src={technology} alt="technology-logo"/>Technology</button>
-    <button name="local" onClick={chooseCategory}><img src={local} alt="local-logo"/>Local</button>
-    <button name="health" onClick={chooseCategory}><img src={health} alt="health-logo"/>Health</button>
+    <button name="entertainment" rel="noopener noreferrer" onClick={chooseCategory}><img src={entertainment} alt="entertainment-logo"/>Entertainment</button>
+    <button name="science" rel="noopener noreferrer" onClick={chooseCategory}><img src={science} alt="science-logo"/>Science</button>
+    <button name="technology" rel="noopener noreferrer" onClick={chooseCategory}><img src={technology} alt="technology-logo"/>Technology</button>
+    <button name="local" rel="noopener noreferrer" onClick={chooseCategory}><img src={local} alt="local-logo"/>Local</button>
+    <button name="health" rel="noopener noreferrer" onClick={chooseCategory}><img src={health} alt="health-logo"/>Health</button>
     </div>
   )
 }
