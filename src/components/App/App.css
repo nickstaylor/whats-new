@@ -11,7 +11,7 @@
   "h h h h h"
   "n m m m m";
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 100px auto;
+  grid-template-rows: 70px auto;
   justify-content: center;
   flex-direction: column;
   background: #0c3c5f;
