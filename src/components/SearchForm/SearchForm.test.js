@@ -8,12 +8,12 @@ import SearchForm from './SearchForm';
 
 describe("SearchForm", ()=>{
   it('should sumbit a search', ()=>{
-    const mockSubmitSearch = jest.fn()
-    const { debug, getByText, getByPlaceholderText } = render(<SearchForm submitSearch={mockSubmitSearch}/>);
+      const mockSubmitSearch = jest.fn()
+      const { debug, getByText, getByPlaceholderText } = render(<SearchForm submitSearch={mockSubmitSearch}/>);
 
-    fireEvent.change(getByPlaceholderText('search for articles here'), {target: {value: 'Moon'}})
-    fireEvent.click(getByText('Search'));
-    expect(mockSubmitSearch).toHaveBeenCalled()
+      fireEvent.change(getByPlaceholderText('search for articles here'), {target: {value: 'Moon'}})
+      fireEvent.click(getByText('Search'));
+      expect(mockSubmitSearch).toHaveBeenCalled()
   })
 
   it('has a placeholder in the search input', () => {
