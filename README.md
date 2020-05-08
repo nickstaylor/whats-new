@@ -12,7 +12,8 @@ This application was built with `create-react-app`.  This is my first applicatio
 
 Users can browse news articles by topic.  Click on any topic in the left-side menu!  Users can also narrow their article search by utilizing the search bar at the top.  
 
-## place pictures or GIF Here
+![whats-new](https://user-images.githubusercontent.com/44849120/81356805-55a7ba00-908f-11ea-9196-e08b1bbec350.gif)
+
 
 ### Technologies Used
 
