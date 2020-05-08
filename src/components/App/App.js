@@ -4,8 +4,6 @@ import entertainment from '../../data/entertainment';
 import health from '../../data/health';
 import science from '../../data/science';
 import technology from '../../data/technology';
-
-
 import './App.css';
 import Menu from '../Menu/Menu'
 import NewsContainer from '../NewsContainer/NewsContainer'
@@ -26,25 +24,17 @@ class App extends Component {
     }
   }
 
-  chooseCategory = (event) =>{
-  const { name } = event.target
-  const menu = event.target.parentNode.children
-  const list = [...menu]
-  console.log(typeof list)
-  list.forEach(item=>{
-    if (item.innerText !== event.target.innerText){
-      item.style.backgroundColor = '#1f6fa8'
-    } else {
+  chooseCategory = event =>{
+    const { name } = event.target
+    const list = [...event.target.parentNode.children]
+    list.forEach(item=>{
+      if (item.innerText !== event.target.innerText){
+        item.style.backgroundColor = '#1f6fa8'
+      } else {
       item.style.backgroundColor = 'orange'
-    }
-  })
-  console.log('nextsibling', event.target.nextSibling)
-  console.log('parentNode.children', event.target.parentNode.children)
-  console.log('type of parentNode.children', typeof(event.target.parentNode.children))
-  event.target.style.backgroundColor = 'orange'
-    console.log('style', event.target.style)
-   this.setState({chosen: this.state[name],
-                  menu: name,
+      }
+    })
+    this.setState({chosen: this.state[name],
                   searchInput: '',
                   filteredData: false})
  }
@@ -56,33 +46,27 @@ class App extends Component {
   })
 }
 
-  submitSearch = ()=>{
+  submitSearch = (event)=>{
+    event.preventDefault()
     this.setState({filteredData: true})
   }
-
-  // resetFilter = () => {
-  //   this.setState({filteredData: false,
-  //                   searchInput: ''})
-  // }
-
 
   render () {
     return (
       <div className="app">
         <SearchForm
-        handleChange={this.handleChange}
-        searchInput={this.state.searchInput}
-        submitSearch={this.submitSearch}
+          handleChange={this.handleChange}
+          searchInput={this.state.searchInput}
+          submitSearch={this.submitSearch}
          />
         <Menu
-        chooseCategory={this.chooseCategory}
-        menu={this.state.menu}
+          chooseCategory={this.chooseCategory}
         />
         <NewsContainer
-        data={this.state.chosen}
-        searchInput={this.state.searchInput}
-        filteredData={this.state.filteredData}
-        resetFilter={this.resetFilter} />
+          data={this.state.chosen}
+          searchInput={this.state.searchInput}
+          filteredData={this.state.filteredData}
+        />
       </div>
     )
   }
