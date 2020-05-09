@@ -20,7 +20,8 @@ describe('App', ()=>{
       fireEvent.click(getByText('Science'))
       fireEvent.change(getByPlaceholderText('search for articles here'), {target: {value: "Lockheed"}})
       fireEvent.click(getByText('Search'))
-
+      // had to do only one return because multiple returns created an array and I didn't know
+      //how to test that I tried to use findAllByText
       expect(getByAltText(/Lockheed/)).toBeInTheDocument();
   })
 
