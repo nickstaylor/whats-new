@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import local from '../../data/local';
-import entertainment from '../../data/entertainment';
-import health from '../../data/health';
-import science from '../../data/science';
-import technology from '../../data/technology';
+// import local from '../../data/local';
+// import entertainment from '../../data/entertainment';
+// import health from '../../data/health';
+// import science from '../../data/science';
+// import technology from '../../data/technology';
 import './App.css';
 import Menu from '../Menu/Menu'
 import NewsContainer from '../NewsContainer/NewsContainer'
@@ -13,15 +13,44 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      local: local,
-      entertainment: entertainment,
-      health: health,
-      science: science,
-      technology: technology,
-      chosen: local,
+      loading: false,
+      local: [],
+      entertainment: [],
+      health: [],
+      science: [],
+      technology: [],
+      chosen: [],
       searchInput: '',
-      filteredData: false
+      // filteredData: false
     }
+  }
+
+  componentDidMount() {
+    this.setState({
+      loading: true
+    })
+    console.log("REGULATORS!!!!...Mount up!")
+    fetch("https://whats-new-api.herokuapp.com/api/v1/news")
+      .then(response => response.json())
+      // .then(response => console.log('response', response))
+      .then(response => {
+        const {
+          entertainment,
+          local,
+          health,
+          science,
+          technology
+        } = response
+        this.setState({
+          entertainment: entertainment,
+          local: local,
+          health: health,
+          science: science,
+          technology: technology,
+          chosen: local,
+          loading: false
+        })
+      })
   }
 
   chooseCategory = event =>{
@@ -35,8 +64,7 @@ class App extends Component {
       }
     })
     this.setState({chosen: this.state[name],
-                  searchInput: '',
-                  filteredData: false})
+                  searchInput: '' })
  }
 
  handleChange = event => {
@@ -48,7 +76,10 @@ class App extends Component {
 
   submitSearch = (event)=>{
     event.preventDefault()
-    this.setState({filteredData: true})
+    let value = this.state.searchInput
+    let filteredArticles = this.state.chosen.filter(item=>item.headline.toLowerCase().includes(value.toLowerCase()))
+    this.setState({ chosen: filteredArticles,
+                    searchInput: ''})
   }
 
   render () {
@@ -62,11 +93,12 @@ class App extends Component {
         <Menu
           chooseCategory={this.chooseCategory}
         />
+        {this.state.loading ? <h2 className="loading">Articles Loading....</h2> :
         <NewsContainer
           data={this.state.chosen}
-          searchInput={this.state.searchInput}
-          filteredData={this.state.filteredData}
-        />
+          // searchInput={this.state.searchInput}
+          // filteredData={this.state.filteredData}
+        />}
       </div>
     )
   }
