@@ -25,7 +25,8 @@ describe('NewsContainer', ()=>{
                                      url: "http://uncool.com",
                                      img: "notCoolAtAll"}]}
                                      searchInput="nothing"
-                                     filteredData={true} />)
+                                     // filteredData={true}
+                                      />)
 
     expect(getByText('So sorry. The search results are empty. Please click on a menu category to view News Articles')).toBeInTheDocument()
   })
