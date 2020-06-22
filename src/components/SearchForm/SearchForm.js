@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './SearchForm.css';
 import PropTypes from 'prop-types'
 
-const SearchForm = (props) =>{
+class SearchForm extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      searchInput: ''
+    }
+  }
+
+   handleChange = event => {
+     const { value } = event.target
+     this.setState({
+       searchInput: value
+     })
+   }
+
+   searchSubmit = event => {
+     event.preventDefault()
+     this.props.submitSearch(this.state.searchInput)
+    this.setState({searchInput: ''})
+   }
+
+  render() {
   return (
     <div className='header'>
       <h2>One Sweet News App!</h2>
@@ -10,18 +31,17 @@ const SearchForm = (props) =>{
         <input
           type="text"
           placeholder="search for articles here"
-          value={props.searchInput}
-          onChange={props.handleChange}
+          value={this.state.searchInput}
+          onChange={this.handleChange}
         />
-        <button onClick={props.submitSearch}>Search</button>
+        <button onClick={this.searchSubmit}>Search</button>
       </form>
     </div>
   )
 }
+}
 
 SearchForm.propTypes = {
-  handleChange: PropTypes.func,
-  searchInput: PropTypes.string,
   submitSearch: PropTypes.func
 }
 

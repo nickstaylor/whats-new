@@ -7,17 +7,17 @@
   background: #1f6fa8;
 }
 
+
 .menu-bar button {
   padding: 10px;
   margin: 15px;
   font-family: comic;
   font-size: 1.5em;
-  background: #1f6fa8;
+  /* background: #1f6fa8; */
   border: none;
   color: whitesmoke;
   display: flex;
   align-items: center;
-  /* background: orange; */
   border-radius: 0px 10px 10px 0px
 }
 
@@ -25,4 +25,12 @@
   padding-right: 15px;
   height: 40px;
   width: 40px;
+}
+
+.active {
+  background: orange;
+}
+
+.inactive{
+  background: #1f6fa8;
 }

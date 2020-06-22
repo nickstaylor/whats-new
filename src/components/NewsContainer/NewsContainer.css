@@ -7,6 +7,7 @@
   overflow-y: auto;
 }
 
-.empty-search {
+.empty-search,
+.loading {
   color: whitesmoke;
 }
