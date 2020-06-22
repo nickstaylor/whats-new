@@ -19,8 +19,9 @@ class App extends Component {
       health: [],
       science: [],
       technology: [],
-      chosen: [],
-      searchInput: '',
+      chosen: 'local',
+      topic: 'local',
+      filtered: []
       // filteredData: false
     }
   }
@@ -47,7 +48,6 @@ class App extends Component {
           health: health,
           science: science,
           technology: technology,
-          chosen: local,
           loading: false
         })
       })
@@ -55,31 +55,26 @@ class App extends Component {
 
   chooseCategory = event =>{
     const { name } = event.target
-    const list = [...event.target.parentNode.children]
-    list.forEach(item=>{
-      if (item.innerText !== event.target.innerText){
-        item.style.backgroundColor = '#1f6fa8'
-      } else {
-      item.style.backgroundColor = 'orange'
-      }
-    })
-    this.setState({chosen: this.state[name],
-                  searchInput: '' })
+    // const list = [...event.target.parentNode.children]
+    // list.forEach(item=>{
+    //   if (item.innerText !== event.target.innerText){
+    //     item.style.backgroundColor = '#1f6fa8'
+    //   } else {
+    //   item.style.backgroundColor = 'orange'
+    //   }
+    // })
+    this.setState({topic: name,
+                  chosen: name
+                  })
  }
 
- handleChange = event => {
-  const { value } = event.target
-  this.setState({
-    searchInput: value
-  })
-}
 
-  submitSearch = (event)=>{
-    event.preventDefault()
-    let value = this.state.searchInput
-    let filteredArticles = this.state.chosen.filter(item=>item.headline.toLowerCase().includes(value.toLowerCase()))
-    this.setState({ chosen: filteredArticles,
-                    searchInput: ''})
+
+  submitSearch = (value)=>{
+    let filteredArticles = this.state[this.state.chosen].filter(item=>item.headline.toLowerCase().includes(value.toLowerCase()))
+    this.setState({ filtered: filteredArticles,
+                    chosen: 'filtered'
+                  })
   }
 
   render () {
@@ -92,10 +87,11 @@ class App extends Component {
          />
         <Menu
           chooseCategory={this.chooseCategory}
+          topic={this.state.topic}
         />
         {this.state.loading ? <h2 className="loading">Articles Loading....</h2> :
         <NewsContainer
-          data={this.state.chosen}
+          data={this.state[this.state.chosen]}
           // searchInput={this.state.searchInput}
           // filteredData={this.state.filteredData}
         />}
