@@ -6,7 +6,7 @@ import App from './App';
 import NewsContainer from '../NewsContainer/NewsContainer'
 
 describe('App', ()=>{
-  it('changes news topics when a menu topic is clicked', () => {
+  it.skip('changes news topics when a menu topic is clicked', () => {
 
     const { getByAltText, getByText } = render(<App />)
     fireEvent.click(getByText('Science'))
@@ -16,7 +16,7 @@ describe('App', ()=>{
 
   })
 
-  it('should show filtered articles based on search input', async () => {
+  it.skip('should show filtered articles based on search input', async () => {
       const { getByPlaceholderText, getByText, getByAltText, findAllByText } = render(<App />)
       fireEvent.click(getByText('Science'))
       fireEvent.change(getByPlaceholderText('search for articles here'), {target: {value: "Lockheed"}})
@@ -27,7 +27,7 @@ describe('App', ()=>{
       expect(result).toBeInTheDocument()
   })
 
-  it('should show message if no articles are in the search', ()=>{
+  it.skip('should show message if no articles are in the search', ()=>{
     const { getByText, getByPlaceholderText } = render(<NewsContainer
                                   data={[{id: 1,
                                      description: "awesomeness",
