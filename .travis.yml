@@ -1,5 +1,11 @@
 language: node_jsat
 node_js:
-- "13.5.0"
+- 13.5.0
 notifications:
-email: false
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: AvO5lsWC4plQ2Gl9OP/GKh7bu/9n9Fr8Vc6M4XW4WOIfdnGEqmiPQleqSyKBEN3MxQb1R7zbPsyU0DdR7rusz/psGQKHSQkYoLUGEJTqx8lYHwasvqdmuMi3xSQmpIAeR9YqlNQBmp99Liz3YOOLoi8H9zu6MhvgzfRT9OQK8NUV1kO0+dCt+EuMSkuzLrJDJKvCii16H3VSnmJXCTi3JtTjtB2JfTrXV/rXcVDEV+aI6jFqpDGgrjVtaZ7kurBkBgKXxQ+GE8hS096RxEFaJUrbwBsEtzW27WIQr4tqUx+e1pwPfkKlP1ILyKwlmrp93mpS5ynbpy0GjLgI0QvIKbK5tRQU5vqE46gTFBO9LO2/4J/srECnWNHVfIsjSKcPy3ZXQVrvvCKthB2ikBVDY3N8wlWN3BPn4eccrDxRfSsP7wGw4dsijxmQBarcduXU52QgU8sKPS/2ufDJ0++ZeNndEzAzNEcCz7cHrdXeIvYoFOvaWBkkCRLEeCt6aco1VcL6/0RKESqlN9tnpYO1K7veTL2kFSMM6ZedhlfadFX3BPPGld6o/rxuaXNsnimV4esd4VeohWlVdG0VbEJY+fES/hCEXTS/cfA5nNkf1Vs7RVZvG3tOSuiA0WYpafloyoTejRJocoN/Zz1k+Uj220ve6vKWqitilNdKSy+7gqI=
+  app: whats-new-nick
+  skip_cleanup: true
