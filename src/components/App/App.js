@@ -30,31 +30,31 @@ class App extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     loading: true
-  //   })
-  //   console.log("REGULATORS!!!!...Mount up!")
-  //   fetch("https://whats-new-api.herokuapp.com/api/v1/news")
-  //     .then(response => response.json())
-  //     .then(response => {
-  //       const {
-  //         entertainment,
-  //         local,
-  //         health,
-  //         science,
-  //         technology
-  //       } = response
-  //       this.setState({
-  //         entertainment: entertainment,
-  //         local: local,
-  //         health: health,
-  //         science: science,
-  //         technology: technology,
-  //         loading: false
-  //       })
-  //     })
-  // }
+  componentDidMount() {
+    this.setState({
+      loading: true
+    })
+    console.log("REGULATORS!!!!...Mount up!")
+    fetch("https://whats-new-api.herokuapp.com/api/v1/news")
+      .then(response => response.json())
+      .then(response => {
+        const {
+          entertainment,
+          local,
+          health,
+          science,
+          technology
+        } = response
+        this.setState({
+          entertainment: entertainment,
+          local: local,
+          health: health,
+          science: science,
+          technology: technology,
+          loading: false
+        })
+      })
+  }
 
   chooseCategory = event =>{
     const { name } = event.target
