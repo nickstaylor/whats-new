@@ -6,6 +6,12 @@ import App from './App';
 import NewsContainer from '../NewsContainer/NewsContainer'
 
 describe('App', ()=>{
+
+  it('renders the app title on load', ()=>{
+    const { getByText } = render(<App />)
+    expect(getByText("One Sweet News App!")).toBeInTheDocument()
+  })
+
   // it('changes news topics when a menu topic is clicked', () => {
   //
   //   const { getByAltText, getByText } = render(<App />)
@@ -26,7 +32,7 @@ describe('App', ()=>{
   //     const result = getByAltText(/Lockheed/)
   //     expect(result).toBeInTheDocument()
   // })
-
+  //
   // it('should show message if no articles are in the search', ()=>{
   //   const { getByText, getByPlaceholderText } = render(<NewsContainer
   //                                 data={[{id: 1,
